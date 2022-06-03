@@ -1,5 +1,6 @@
 package com.taskapp.repository;
 
+import com.taskapp.dto.TaskDto;
 import com.taskapp.model.Task;
 import org.springframework.data.repository.CrudRepository;
 
