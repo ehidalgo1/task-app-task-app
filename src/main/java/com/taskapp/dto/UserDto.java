@@ -1,5 +1,7 @@
 package com.taskapp.dto;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.util.Date;
 
 public class UserDto {
@@ -65,6 +67,7 @@ public class UserDto {
         this.username = username;
     }
 
+    @JsonIgnore
     public Date getCreateAt() {
         return createAt;
     }
@@ -73,6 +76,7 @@ public class UserDto {
         this.createAt = createAt;
     }
 
+    @JsonIgnore
     public Date getUpdateAt() {
         return updateAt;
     }
@@ -83,7 +87,7 @@ public class UserDto {
 
     @Override
     public String toString() {
-        return "UserDto{" +
+        return "User{" +
                 "id=" + id +
                 ", uuid='" + uuid + '\'' +
                 ", firstname='" + firstname + '\'' +

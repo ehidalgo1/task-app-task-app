@@ -1,18 +1,40 @@
 package com.taskapp.dto;
 
+import com.taskapp.model.Type;
+
+import java.time.LocalDateTime;
+import java.util.Date;
+
 public class TaskDto {
 
     private Long id;
     private String uuid;
-    private String type;
-    private UserDto userDto;
+    private Type type;
+    private UserDto user;
     private String resume;
     private String status;
     private String timeTask;
-    private String assignedAt;
-    private String resolveAt;
-    private String createAt;
-    private String updateAt;
+    private LocalDateTime assignedAt;
+    private LocalDateTime resolveAt;
+    private LocalDateTime createAt;
+    private LocalDateTime updateAt;
+
+    public TaskDto() {
+    }
+
+    public TaskDto(Long id, String uuid, Type type, UserDto user, String resume, String status, String timeTask, LocalDateTime assignedAt, LocalDateTime resolveAt, LocalDateTime createAt, LocalDateTime updateAt) {
+        this.id = id;
+        this.uuid = uuid;
+        this.type = type;
+        this.user = user;
+        this.resume = resume;
+        this.status = status;
+        this.timeTask = timeTask;
+        this.assignedAt = assignedAt;
+        this.resolveAt = resolveAt;
+        this.createAt = createAt;
+        this.updateAt = updateAt;
+    }
 
     public Long getId() {
         return id;
@@ -30,20 +52,20 @@ public class TaskDto {
         this.uuid = uuid;
     }
 
-    public String getType() {
+    public Type getType() {
         return type;
     }
 
-    public void setType(String type) {
+    public void setType(Type type) {
         this.type = type;
     }
 
-    public UserDto getUserDto() {
-        return userDto;
+    public UserDto getUser() {
+        return user;
     }
 
-    public void setUserDto(UserDto userDto) {
-        this.userDto = userDto;
+    public void setUser(UserDto user) {
+        this.user = user;
     }
 
     public String getResume() {
@@ -70,35 +92,35 @@ public class TaskDto {
         this.timeTask = timeTask;
     }
 
-    public String getAssignedAt() {
+    public LocalDateTime getAssignedAt() {
         return assignedAt;
     }
 
-    public void setAssignedAt(String assignedAt) {
+    public void setAssignedAt(LocalDateTime assignedAt) {
         this.assignedAt = assignedAt;
     }
 
-    public String getResolveAt() {
+    public LocalDateTime getResolveAt() {
         return resolveAt;
     }
 
-    public void setResolveAt(String resolveAt) {
+    public void setResolveAt(LocalDateTime resolveAt) {
         this.resolveAt = resolveAt;
     }
 
-    public String getCreateAt() {
+    public LocalDateTime getCreateAt() {
         return createAt;
     }
 
-    public void setCreateAt(String createAt) {
+    public void setCreateAt(LocalDateTime createAt) {
         this.createAt = createAt;
     }
 
-    public String getUpdateAt() {
+    public LocalDateTime getUpdateAt() {
         return updateAt;
     }
 
-    public void setUpdateAt(String updateAt) {
+    public void setUpdateAt(LocalDateTime updateAt) {
         this.updateAt = updateAt;
     }
 
@@ -107,15 +129,15 @@ public class TaskDto {
         return "TaskDto{" +
                 "id=" + id +
                 ", uuid='" + uuid + '\'' +
-                ", type='" + type + '\'' +
-                ", userDto=" + userDto +
+                ", type=" + type +
+                ", user=" + user +
                 ", resume='" + resume + '\'' +
                 ", status='" + status + '\'' +
                 ", timeTask='" + timeTask + '\'' +
-                ", assignedAt='" + assignedAt + '\'' +
-                ", resolveAt='" + resolveAt + '\'' +
-                ", createAt='" + createAt + '\'' +
-                ", updateAt='" + updateAt + '\'' +
+                ", assignedAt=" + assignedAt +
+                ", resolveAt=" + resolveAt +
+                ", createAt=" + createAt +
+                ", updateAt=" + updateAt +
                 '}';
     }
 }
