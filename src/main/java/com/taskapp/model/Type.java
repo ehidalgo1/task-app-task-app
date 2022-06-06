@@ -1,6 +1,5 @@
 package com.taskapp.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 
@@ -23,7 +22,6 @@ public class Type {
         this.type = type;
     }
 
-    @JsonIgnore
     public int getId() {
         return id;
     }

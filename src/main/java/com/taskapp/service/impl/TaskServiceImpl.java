@@ -287,7 +287,7 @@ public class TaskServiceImpl implements TaskService {
         }
         logger.info("Response: "+taskResp);
         response = new Response(StatusEnum.OK, Constant.TASK, taskResp);
-        return new ResponseEntity(response, HttpStatus.OK);
+        return new ResponseEntity(response, HttpStatus.CREATED);
     }
 
 
