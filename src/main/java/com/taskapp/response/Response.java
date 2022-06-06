@@ -3,20 +3,24 @@ package com.taskapp.response;
 import com.taskapp.util.StatusEnum;
 
 import java.time.LocalDateTime;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Response {
 
     private Enum<StatusEnum> status;
     private LocalDateTime date;
-    private Object response;
+    private Map<String, Object> response;
 
     public Response() {
     }
 
-    public Response(Enum<StatusEnum> status, Object response) {
+    public Response(Enum<StatusEnum> status, String typeResponse, Object response) {
         this.status = status;
         this.date = LocalDateTime.now();
-        this.response = response;
+        Map<String, Object> resp = new HashMap<>();
+        resp.put(typeResponse, response);
+        this.response = resp;
     }
 
     public Enum<StatusEnum> getStatus() {
@@ -35,11 +39,11 @@ public class Response {
         this.date = date;
     }
 
-    public Object getResponse() {
+    public Map<String, Object> getResponse() {
         return response;
     }
 
-    public void setResponse(Object response) {
+    public void setResponse(Map<String, Object> response) {
         this.response = response;
     }
 
