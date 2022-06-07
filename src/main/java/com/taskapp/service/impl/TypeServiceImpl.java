@@ -107,6 +107,12 @@ public class TypeServiceImpl implements TypeService {
         Response response = null;
         String msg = null;
         try {
+            if (type.getType() == null || type.getType().isEmpty()){
+                msg = "El tipo no puede ser vacio";
+                logger.error(msg);
+                response = new Response(StatusEnum.ERROR, Constant.MESSAGE_ERROR, msg);
+                return new ResponseEntity(response, HttpStatus.BAD_REQUEST);
+            }
             typeFind = typeRepository.findById(id).get();
             if (typeFind==null){
                 msg = "El tipo no existe";
