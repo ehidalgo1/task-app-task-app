@@ -50,18 +50,29 @@ public class TaskServiceImpl implements TaskService {
     @Override
     @Transactional(readOnly = true)
     public ResponseEntity findAll() {
-        List<Task> tasks = null;
+        List<TaskDto> tasksResp = null;
         Response response = null;
         String msg = null;
         try {
-            tasks = (List<Task>) taskRepository.findAll();
+            tasksResp = new ArrayList<>();
+            logger.info("invocando microservicio http://localhost:8090/api/user/id/");
+            List<Task> tasks = (List<Task>) taskRepository.findAll();
+            for (Task task: tasks) {
+                if (task.getIdUser() != null && task.getIdUser() >0 ){
+                    Map<String, Long> pathVariable = new HashMap<>();
+                    pathVariable.put("id", task.getIdUser());
+                    UserDto userDto = restTemplate.getForObject("http://localhost:8090/api/user/id/{id}", UserDto.class, pathVariable);
+                    TaskDto taskDto = taskMapper.taskToTaskDto(task, userDto);
+                    tasksResp.add(taskDto);
+                }
+            }
         }catch (Exception e){
             msg = "Ha ocurrido un error de servidor";
             logger.error(msg, e);
             response = new Response(StatusEnum.ERROR, Constant.MESSAGE_ERROR, msg);
             return new ResponseEntity(response, HttpStatus.INTERNAL_SERVER_ERROR);
         }
-        response = new Response(StatusEnum.OK, Constant.TASKS_LIST, tasks);
+        response = new Response(StatusEnum.OK, Constant.TASKS_LIST, tasksResp);
         return new ResponseEntity(response, HttpStatus.OK);
     }
 
